@@ -33,6 +33,8 @@
 
 #include "cbor/CBOREncoder.h"
 
+#include "AIoTC_Version.h"
+
 /******************************************************************************
    GLOBAL CONSTANTS
  ******************************************************************************/
@@ -98,6 +100,8 @@ int ArduinoIoTCloudTCP::begin(String brokerAddress, uint16_t brokerPort)
 {
   _brokerAddress = brokerAddress;
   _brokerPort = brokerPort;
+
+  DBG_INFO("Firmware version: %d.%d.%d-%d", AIOTC_VERSION.major, AIOTC_VERSION.minor, AIOTC_VERSION.patch, AIOTC_VERSION.rev_num);
 
 #if OTA_ENABLED
   /* Calculate the SHA256 checksum over the firmware stored in the flash of the
