@@ -386,6 +386,11 @@ void ArduinoIoTCloudTCP::onOTARequest()
 
   if (_ota_req)
   {
+    /* Clear the ota error. */
+    _ota_error = static_cast<int>(OTAError::None);
+    /* Update the cloud. */
+    sendPropertiesToCloud();
+
     /* Clear the request flag. */
     _ota_req = false;
 
